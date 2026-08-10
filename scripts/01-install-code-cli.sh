@@ -5,6 +5,9 @@ set -e
 
 echo "🔧 Installing VS Code CLI..."
 
+export PATH="$HOME/.local/bin:$PATH"
+mkdir -p ~/.local/bin/
+
 # Check if already installed
 if command -v code >/dev/null 2>&1; then
     echo "✅ VS Code CLI already installed"

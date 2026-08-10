@@ -40,9 +40,13 @@ main() {
     cd "$SCRIPT_DIR"
     
     log_header "🚀 Starting platform dotfiles installation..."
+
+    # Prefer user-local installs (no conda)
+    export PATH="$HOME/.local/bin:$PATH"
+    mkdir -p "$HOME/.local/bin"
     
-    # Find all numbered scripts and sort them
-    scripts=($(find scripts -name "[0-9][0-9]-*.sh" | sort))
+    # Find all numbered scripts and sort them (scripts/ only, not checkpoints)
+    scripts=($(find scripts -maxdepth 1 -name "[0-9][0-9]-*.sh" | sort))
     
     
     log_info "Found ${#scripts[@]} installation scripts:"
