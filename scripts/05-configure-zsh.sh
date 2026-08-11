@@ -32,9 +32,15 @@ else
     git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_DIR/zsh-syntax-highlighting"
 fi
 
-# copy .zshrc if it doesn't exist
-if [ -f ~/.zshrc ]; then
-    echo "⚠️ Existing .zshrc found, not overwriting"
+# Install our managed .zshrc, backing up any pre-existing one first.
+# (A stub .zshrc often ships with base images, so we can't just skip
+# when the file exists — that would silently drop plugin sourcing.)
+if grep -q "created by platform-dotfiles" ~/.zshrc 2>/dev/null; then
+    echo "✅ .zshrc already managed by platform-dotfiles"
+elif [ -f ~/.zshrc ]; then
+    echo "⚠️ Existing .zshrc found, backing up to ~/.zshrc.bak"
+    cp ~/.zshrc ~/.zshrc.bak
+    cp "$REPO_DIR/config/.zshrc" ~/.zshrc
 else
     cp "$REPO_DIR/config/.zshrc" ~/.zshrc
 fi
