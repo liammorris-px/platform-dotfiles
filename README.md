@@ -30,9 +30,9 @@ Installs tools into `~/.local` (no conda, no root). Zsh uses a prebuilt binary; 
 - VS Code CLI / tunnel
 - Starship prompt
 - Zsh plugins (autosuggestions, syntax highlighting, fzf)
-- VS Code extensions
 - Node.js + npm (official tarball → `~/.local`)
 - Claude Code (`npm install -g @anthropic-ai/claude-code`)
+- Cursor CLI (`curl https://cursor.com/install -fsS | bash`)
 
 ## Manual Installation
 
@@ -40,16 +40,15 @@ Installs tools into `~/.local` (no conda, no root). Zsh uses a prebuilt binary; 
 bash scripts/00-install-zsh.sh
 bash scripts/01-install-code-cli.sh
 bash scripts/02-install-starship.sh
-bash scripts/03-install-code-extensions.sh
 bash scripts/04-configure-bash.sh
 bash scripts/05-configure-zsh.sh
 bash scripts/06-install-nodejs.sh
 bash scripts/07-install-claude-code.sh
+bash scripts/08-install-cursor-cli.sh
 ```
 
 ## Configuration
 
-- VS Code extensions: `config/vscode-extensions.txt`
 - Starship: `config/starship.toml`
 - Base Zsh config: `config/.zshrc` (adds `~/.local/bin` to `PATH`)
 
